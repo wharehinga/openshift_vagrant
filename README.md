@@ -1,2 +1,2 @@
 # openshift_vagrant
-openshift 4 node local environment
+openshift 4 node local environmentCurrently experimental phase
