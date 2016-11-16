@@ -1,5 +1,11 @@
 # -*- mode: ruby -*-
 # # vi: set ft=ruby :
+#
+#
+file_to_disk1= 'tmp/host1disk2.vdi'
+file_to_disk2= 'tmp/host2disk2.vdi'
+file_to_disk3= 'tmp/host3disk2.vdi'
+file_to_disk4= 'tmp/host4disk2.vdi'
 
 Vagrant.configure("2") do |config|
 # Use the same key for each machine
@@ -22,10 +28,10 @@ config.ssh.insert_key = false
 
 # create the second disk and attach it
   config.vm.provider "virtualbox" do |vb|
-      unless File.exist?('secondDisk.vdi')
-          vb.customize ['createhd', '--filename', 'secondDisk.vdi' , '--variant', 'Fixed', '--size', 20 * 1024]
+      unless File.exist?(file_to_disk1)
+          vb.customize ['createhd', '--filename', file_to_disk1, '--variant', 'Fixed', '--size', 1 * 1024]
       end
-      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', 'secondDisk.vdi']
+      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk1]
   end
   end
 
@@ -44,10 +50,10 @@ config.ssh.insert_key = false
     end
 # create the second disk and attach it
   config.vm.provider "virtualbox" do |vb|
-      unless File.exist?('./2secondDisk.vdi')
-          vb.customize ['createhd', '--filename', './2secondDisk.vdi' , '--variant', 'Fixed', '--size', 20 * 1024]
+      unless File.exist?(file_to_disk2)
+          vb.customize ['createhd', '--filename', file_to_disk2' , '--variant', 'Fixed', '--size', 1 * 1024]
       end
-      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', './2secondDisk.vdi']
+      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk2]
   end
   end
 
@@ -67,10 +73,10 @@ config.ssh.insert_key = false
     end
 # create the second disk and attach it
   config.vm.provider "virtualbox" do |vb|
-      unless File.exist?('./3secondDisk.vdi')
-          vb.customize ['createhd', '--filename', './3secondDisk.vdi' , '--variant', 'Fixed', '--size', 20 * 1024]
+      unless File.exist?(file_to_disk3)
+          vb.customize ['createhd', '--filename',  file_to_disk3, '--variant', 'Fixed', '--size', 1 * 1024]
       end
-      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', './3secondDisk.vdi']
+      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk3
   end
   end
 
@@ -90,10 +96,10 @@ config.ssh.insert_key = false
     end
 # create the second disk and attach it
   config.vm.provider "virtualbox" do |vb|
-      unless File.exist?('./4secondDisk.vdi')
-          vb.customize ['createhd', '--filename', './4secondDisk.vdi' , '--variant', 'Fixed', '--size', 20 * 1024]
+      unless File.exist?(file_to_disk4)
+          vb.customize ['createhd', '--filename', file_to_disk4, '--variant', 'Fixed', '--size', 1 * 1024]
       end
-      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', './4secondDisk.vdi']
+      vb.customize ['storageattach', :id,  '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk4]
   end
   end
 
